@@ -41,10 +41,8 @@ pipeline {
          stage('Send Email Notification') {
             steps {
                 emailtext{
-                    subject: "NestJS App Deployed
-                    Successfully on EC2!",
-                    body: "Your Nest JS app is Deployed!
-                    http://localhost:${PORT}/",
+                    subject: "NestJS App Deployed Successfully on EC2!",
+                    body: "Your Nest JS app is Deployed! http://localhost:${PORT}/",
                     to: "${EMAIL}"
                 }
             }
