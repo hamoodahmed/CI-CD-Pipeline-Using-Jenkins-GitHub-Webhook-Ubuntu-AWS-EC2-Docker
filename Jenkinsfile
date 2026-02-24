@@ -11,8 +11,8 @@ pipeline {
     stages {
         stage('Clone Repo'){
             steps{
-                git branch: 'main', url: 'https://github.com/hamoodahmed/CI-CD-Pipeline-Using-Jenkins-GitHub-Webhook-Ubuntu-AWS-EC2-Docker.git'
-                
+                git branch: 'main',
+                url: 'https://github.com/hamoodahmed/CI-CD-Pipeline-Using-Jenkins-GitHub-Webhook-Ubuntu-AWS-EC2-Docker.git' 
             }
         }
 
@@ -24,8 +24,7 @@ pipeline {
         stage('Stop & Remove Previous Container') {
             steps {
                 sh '''
-                    docker stop $CONTAINER_NAME ||
-                    true
+                    docker stop $CONTAINER_NAME || true
                     docker rm $CONTAINER_NAME || true
                  '''
             }
@@ -40,11 +39,11 @@ pipeline {
         }
          stage('Send Email Notification') {
             steps {
-                emailtext{
+                emailtext(
                     subject: "NestJS App Deployed Successfully on EC2!",
                     body: "Your Nest JS app is Deployed! http://localhost:${PORT}/",
                     to: "${EMAIL}"
-                }
+                )
             }
         }
     }
