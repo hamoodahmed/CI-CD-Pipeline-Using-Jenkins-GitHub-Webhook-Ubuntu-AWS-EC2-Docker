@@ -11,14 +11,14 @@ pipeline {
     stages {
         stage('Clone Repo'){
             steps{
-                git branch: 'main', url: 'https://github.com/hamoodahmed/
-                CI-CD-Pipeline-Using-Jenkins-GitHub-Webhook-Ubuntu-AWS-EC2-Docker.git'
+                git branch: 'main', url: 'https://github.com/hamoodahmed/CI-CD-Pipeline-Using-Jenkins-GitHub-Webhook-Ubuntu-AWS-EC2-Docker.git'
+                
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME'
+                sh 'docker build -t $IMAGE_NAME .'
             }
         }
         stage('Stop & Remove Previous Container') {
