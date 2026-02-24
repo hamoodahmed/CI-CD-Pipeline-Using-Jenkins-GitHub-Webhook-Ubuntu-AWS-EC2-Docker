@@ -18,12 +18,12 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $IMAGE_NAME .'
+                bat 'docker build -t $IMAGE_NAME .'
             }
         }
         stage('Stop & Remove Previous Container') {
             steps {
-                sh '''
+                bat '''
                     docker stop $CONTAINER_NAME || true
                     docker rm $CONTAINER_NAME || true
                  '''
@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Docker Container Run') {
             steps {
-                sh '''
+                bat '''
                     docker run -d -p ${PORT}:${PORT}
                     --name $CONTAINER_NAME $IMAGE_NAME
                 '''
