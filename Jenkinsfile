@@ -31,10 +31,7 @@ pipeline {
         }
         stage('Docker Container Run') {
             steps {
-                bat '''
-                    docker run -d -p %PORT%:%PORT%
-                    --name %CONTAINER_NAME% %IMAGE_NAME%
-                '''
+                bat 'docker run -d -p %PORT%:%PORT% --name %CONTAINER_NAME% %IMAGE_NAME%'
             }
         }
          stage('Send Email Notification') {
